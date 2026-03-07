@@ -1,0 +1,23 @@
+# INT8 Quantization Benchmark - Python Dependencies
+# Raspberry Pi 5 + ONNX Runtime 1.18.0
+
+# Core dependencies
+numpy==1.26.4
+pandas==2.2.0
+matplotlib==3.8.2
+
+# ONNX Runtime (CPU)
+onnxruntime==1.18.0
+
+# Statistical analysis
+scipy==1.12.0
+
+# Data handling
+pillow==10.4.0
+
+# System monitoring (for CPU utilization)
+psutil==5.9.8
+
+# Optional: Jupyter for interactive analysis
+# jupyter==1.0.0
+# ipykernel==6.29.0

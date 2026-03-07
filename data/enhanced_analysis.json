@@ -1,0 +1,108 @@
+{
+  "summary": {
+    "mobilenet_v3_small_CIFAR100_mobilenet_v3_small_CIFAR100_fp32": {
+      "mean_ms": 1.979255703333607,
+      "p50_ms": 1.9785835000014629,
+      "p90_ms": 2.005144799994696,
+      "img_s": 505.2404286700941
+    },
+    "mobilenet_v3_small_CIFAR100_mobilenet_v3_small_CIFAR100_int8": {
+      "mean_ms": 0.5235017433334832,
+      "p50_ms": 0.5200460000018836,
+      "p90_ms": 0.5421423999955266,
+      "img_s": 1910.21331396594
+    },
+    "resnet18_CIFAR100_resnet18_CIFAR100_fp32": {
+      "mean_ms": 13.256347703333304,
+      "p50_ms": 13.248907499999518,
+      "p90_ms": 14.249971799999628,
+      "img_s": 75.43555905285665
+    },
+    "resnet18_CIFAR100_resnet18_CIFAR100_int8": {
+      "mean_ms": 1.450371756666679,
+      "p50_ms": 1.129701499998248,
+      "p90_ms": 2.195980999992741,
+      "img_s": 689.4784012467624
+    },
+    "mobilenet_v3_small_SVHN_mobilenet_v3_small_SVHN_fp32": {
+      "mean_ms": 1.9672831399996464,
+      "p50_ms": 1.9642350000026452,
+      "p90_ms": 1.9956635999989203,
+      "img_s": 508.31523925944873
+    },
+    "mobilenet_v3_small_SVHN_mobilenet_v3_small_SVHN_int8": {
+      "mean_ms": 0.4979378599996191,
+      "p50_ms": 0.4928644999964149,
+      "p90_ms": 0.5182674000039356,
+      "img_s": 2008.28272025904
+    },
+    "resnet18_SVHN_resnet18_SVHN_fp32": {
+      "mean_ms": 13.02119798333242,
+      "p50_ms": 12.750447499996652,
+      "p90_ms": 14.041634600010866,
+      "img_s": 76.79784926702092
+    },
+    "resnet18_SVHN_resnet18_SVHN_int8": {
+      "mean_ms": 1.109476343332479,
+      "p50_ms": 1.105554500000494,
+      "p90_ms": 1.1335474999867756,
+      "img_s": 901.3261129988132
+    }
+  },
+  "statistical_tests": {
+    "mobilenet_v3_small_CIFAR100_mobilenet_v3_small_CIFAR100": {
+      "speedup": 3.8046317056458396,
+      "fp32_ms": 1.9785835000014629,
+      "int8_ms": 0.5200460000018836,
+      "cohens_d": 100.82596501141782,
+      "effect_size_interpretation": "large"
+    },
+    "resnet18_CIFAR100_resnet18_CIFAR100": {
+      "speedup": 11.727794908672836,
+      "fp32_ms": 13.248907499999518,
+      "int8_ms": 1.129701499998248,
+      "cohens_d": 128.89498762806008,
+      "effect_size_interpretation": "large"
+    },
+    "mobilenet_v3_small_SVHN_mobilenet_v3_small_SVHN": {
+      "speedup": 3.985344856480702,
+      "fp32_ms": 1.9642350000026452,
+      "int8_ms": 0.4928644999964149,
+      "cohens_d": 102.75075775676238,
+      "effect_size_interpretation": "large"
+    },
+    "resnet18_SVHN_resnet18_SVHN": {
+      "speedup": 11.533079101926639,
+      "fp32_ms": 12.750447499996652,
+      "int8_ms": 1.105554500000494,
+      "cohens_d": 128.67632212260085,
+      "effect_size_interpretation": "large"
+    }
+  },
+  "confidence_intervals": {
+    "mobilenet_v3_small_CIFAR100_mobilenet_v3_small_CIFAR100": {
+      "fp32_ci_lower": 1.9763445219974365,
+      "fp32_ci_upper": 1.9808224780054893,
+      "int8_ci_lower": 0.5194575125536232,
+      "int8_ci_upper": 0.5206344874501441
+    },
+    "resnet18_CIFAR100_resnet18_CIFAR100": {
+      "fp32_ci_lower": 13.233914949788796,
+      "fp32_ci_upper": 13.26390005021024,
+      "int8_ci_lower": 1.1284231224065973,
+      "int8_ci_upper": 1.1309798775898987
+    },
+    "mobilenet_v3_small_SVHN_mobilenet_v3_small_SVHN": {
+      "fp32_ci_lower": 1.962012258854879,
+      "fp32_ci_upper": 1.9664577411504114,
+      "int8_ci_lower": 0.4923067713109909,
+      "int8_ci_upper": 0.49342222868183894
+    },
+    "resnet18_SVHN_resnet18_SVHN": {
+      "fp32_ci_lower": 12.736019010375685,
+      "fp32_ci_upper": 12.764875989617618,
+      "int8_ci_lower": 1.104303447311663,
+      "int8_ci_upper": 1.106805552689325
+    }
+  }
+}

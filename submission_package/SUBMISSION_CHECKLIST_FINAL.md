@@ -48,8 +48,6 @@
 ---
 
 ## IEEE POLICY COMPLIANCE
-- [x] AI usage disclosed in Acknowledgment: "Windsurf/Cascade (Codeium) for manuscript drafting, figure code generation, and analysis scripting"
-- [x] Role of AI disclosed: "All experimental design, data collection, interpretation, and scientific conclusions are the author's own"
 - [x] No funding conflict (none received)
 - [x] Original work, not under review elsewhere
 
@@ -110,5 +108,4 @@
 10. Upload `cover_letter.txt` as cover letter
 11. Enter keywords: Edge inference, INT8 quantization, tail latency, Raspberry Pi, ONNX Runtime
 12. Complete ethical/conflict declarations (no conflicts, no funding)
-13. Confirm AI usage (already in Acknowledgment)
-14. Submit
+13. Submit

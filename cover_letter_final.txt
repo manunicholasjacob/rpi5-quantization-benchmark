@@ -58,9 +58,7 @@ ORIGINALITY AND ETHICS
 
 This manuscript is original work not published or under review elsewhere. There
 is no significant overlap with my prior publications. All experimental data,
-analysis, and scientific conclusions are my own. AI-assisted tools (Windsurf/
-Cascade by Codeium) were used for manuscript drafting and analysis scripting, as
-disclosed in the Acknowledgment section per IEEE policy.
+analysis, and scientific conclusions are my own.
 
 REPRODUCIBILITY
 

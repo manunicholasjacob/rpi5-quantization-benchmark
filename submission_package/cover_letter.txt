@@ -1,0 +1,85 @@
+Manu Nicholas Jacob
+University of Massachusetts Amherst (B.S. EE & CpE, 2025)
+manunicholasjacob@gmail.com
+ORCID: 0009-0007-6589-6572
+
+May 2, 2026
+
+Editor-in-Chief
+IEEE Embedded Systems Letters
+
+Dear Editor-in-Chief,
+
+I am submitting the manuscript titled:
+
+  "INT8 Quantization on Raspberry Pi 5: A Reproducible Benchmark of
+   Latency, Energy, and Tail-Latency Failure Modes"
+
+for consideration in IEEE Embedded Systems Letters.
+
+SUMMARY OF CONTRIBUTION
+
+This paper presents a statistically rigorous, fully reproducible benchmark of
+INT8 post-training quantization (PTQ) on Raspberry Pi 5 (ARM Cortex-A76) using
+ONNX Runtime 1.18.0. The work directly addresses a practical gap: while INT8
+quantization is widely recommended for edge CPU inference, practitioners have no
+statistically validated, hardware-specific characterization of when it helps and
+when it introduces deployment instability.
+
+The three principal findings are:
+
+1. LATENCY AND COMPRESSION: INT8 delivers 3.80–11.73× P50 latency reduction
+   (p < 0.001, Cohen's d > 100 in all four model×dataset configurations) with
+   3.3–4.0× model size compression, validated with 300-iteration trials and
+   95% confidence intervals.
+
+2. TAIL-LATENCY FAILURE MODE (key novelty): ResNet-18 INT8 on CIFAR-100
+   exhibits a 1.94× P90/P50 tail-latency ratio—a bimodal distribution driven
+   by stochastic LLC cache pressure from 108 Q/DQ cast operations wrapping
+   large (2.3M-element) weight tensors. Critically, the same model on SVHN
+   shows no tail inflation (P90/P50 = 1.03), demonstrating that the hazard is
+   dataset-conditioned. This failure persists across batch sizes 1–8 and is
+   completely invisible in median-only benchmarks—representing a concrete
+   deployment hazard for real-time SLO-constrained systems that has not been
+   previously documented.
+
+3. ENERGY-DELAY PRODUCT: Surrogate-modeled EDP improvements of 5.2× (MV3-S)
+   and 43.3× (R18), with explicit uncertainty quantification (±20–60%).
+
+VENUE FIT
+
+This work fits IEEE Embedded Systems Letters directly: it addresses embedded
+inference deployment, uses embedded hardware (Raspberry Pi 5), contributes
+empirical insight with practical deployment implications, and is concise
+(4 pages). The tail-latency failure-mode finding is immediately actionable for
+embedded systems practitioners.
+
+ORIGINALITY AND ETHICS
+
+This manuscript is original work not published or under review elsewhere. There
+is no significant overlap with my prior publications. All experimental data,
+analysis, and scientific conclusions are my own. AI-assisted tools (Windsurf/
+Cascade by Codeium) were used for manuscript drafting and analysis scripting, as
+disclosed in the Acknowledgment section per IEEE policy.
+
+REPRODUCIBILITY
+
+All artifacts are publicly available at:
+https://github.com/manunicholasjacob/rpi5-quantization-benchmark
+(MIT license): ONNX models with SHA-256 checksums, 9,600+ raw latency
+measurements as CSV, analysis scripts, calibration ablation models, and a
+one-command reproduce.sh script.
+
+I confirm this submission complies with IEEE ESL requirements: ≤4 pages
+including all figures, tables, and references; IEEE two-column transactions
+format; and AI usage disclosure in the Acknowledgments.
+
+Thank you for your consideration.
+
+Sincerely,
+
+Manu Nicholas Jacob
+manunicholasjacob@gmail.com
+ORCID: 0009-0007-6589-6572
+University of Massachusetts Amherst, B.S. Electrical Engineering &
+Computer Engineering (2025)

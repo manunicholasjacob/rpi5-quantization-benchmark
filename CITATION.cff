@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it as below."
+title: "The INT8 Configuration Cliff: Export Format and Graph Optimization, Not Weights, Govern a 40x Latency Swing on Arm Cortex-A76"
+authors:
+  - family-names: "Jacob"
+    given-names: "Manu Nicholas"
+    orcid: "https://orcid.org/0009-0007-6589-6572"
+type: software
+repository-code: "https://github.com/manunicholasjacob/rpi5-quantization-benchmark"
+url: "http://manunicholasjacob.com/"
+version: "1.0.0"
+date-released: "2026-07-23"

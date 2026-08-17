@@ -1,3 +1,29 @@
+> ## Superseded: the headline result of this artifact is a measurement artifact
+>
+> **Updated August 2026.** This repository accompanied a manuscript arguing that the ONNX
+> **export format** (QOperator vs QDQ) governs a large INT8 latency swing on Arm Cortex-A76,
+> and that QOperator models run 1.8 to 4x *slower* than FP32.
+>
+> **That attribution is wrong, and the manuscript has been withdrawn from review.**
+>
+> The arm labelled `QOperator` here was never a QOperator export. The model files contain
+> `DynamicQuantizeLinear` and `ConvInteger` operators, which are the signature of *dynamic*
+> quantization, rather than the `QLinearConv` that a genuine static QOperator export produces.
+> The label was assumed rather than verified against the operator graph.
+>
+> Re-quantizing the same weights statically in both representations reverses the finding. On the
+> Cortex-A76, static QOperator runs **1.25 to 2.70x faster** than FP32. The real determinant is
+> **dynamic versus static quantization**, worth more than 4x. The choice between the two *static*
+> representations is worth under 5%.
+>
+> The raw measurements in this repository are unchanged and remain valid as measurements. It is
+> the interpretation that was wrong. They are kept public rather than deleted so that the
+> correction is checkable.
+>
+> **If you are reusing anything here, verify the operator graph of any quantized artifact before
+> labelling it.** `DynamicQuantizeLinear` / `ConvInteger` means dynamic, `QLinearConv` means
+> static QOperator, and `QuantizeLinear` / `DequantizeLinear` around ops means QDQ.
+
 # The INT8 Configuration Cliff (Raspberry Pi 5 / Arm Cortex-A76)
 
 Reproducible artifact for the paper **"The INT8 Configuration Cliff: Export Format and

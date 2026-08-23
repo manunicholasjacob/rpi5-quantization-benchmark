@@ -1,6 +1,8 @@
 cff-version: 1.2.0
-message: "If you use this software or its results, please cite it as below."
-title: "The INT8 Configuration Cliff: Export Format and Graph Optimization, Not Weights, Govern a 40x Latency Swing on Arm Cortex-A76"
+message: >-
+  The manuscript this artifact accompanied is retracted and is not being pursued.
+  If you use the measurements, cite the archived snapshot below.
+title: "INT8 configuration study on Raspberry Pi 5 (Arm Cortex-A76)"
 type: software
 authors:
   - family-names: "Jacob"

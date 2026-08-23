@@ -1,5 +1,5 @@
 {
-  "title": "The INT8 Configuration Cliff: Export Format and Graph Optimization, Not Weights, Govern a 40x Latency Swing on Arm Cortex-A76",
+  "title": "INT8 configuration study on Raspberry Pi 5 (Arm Cortex-A76)",
   "upload_type": "software",
   "license": "mit",
   "access_right": "open",
@@ -25,5 +25,7 @@
       "resource_type": "software",
       "scheme": "url"
     }
-  ]
+  ],
+  "description": "Latency measurements of quantized ImageNet models on a Raspberry Pi 5 (Arm Cortex-A76) across ONNX Runtime graph-optimization levels, with the scripts that produce them.\n\nThis record supersedes v1, which was titled \"The INT8 Configuration Cliff: Export Format and Graph Optimization, Not Weights, Govern a 40x Latency Swing on Arm Cortex-A76\". That title asserts a conclusion the authors retract.\n\nThe retracted claim was that the ONNX export format, QDQ against QOperator, governs the sign of the INT8 latency effect, and that QOperator models run slower than FP32 at every optimization level. The arm labelled QOperator was never a QOperator export: its operator graph contains DynamicQuantizeLinear and ConvInteger, the signature of dynamic quantization, rather than QLinearConv. Re-quantizing the same weights statically reverses the result. On the Cortex-A76, static QOperator runs 1.25 to 2.70 times faster than FP32. The determinant is dynamic against static quantization, worth more than 4x; the static representation is worth under 20 percent.\n\nGraph-optimization level does govern whether a quantized graph pays, and that result stands.\n\nThe measurements are unchanged and remain valid as measurements. They are kept public rather than deleted so the correction is checkable. The manuscript this artifact accompanied is not being pursued.",
+  "version": "v2.0.0"
 }

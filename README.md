@@ -4,7 +4,7 @@
 > **export format** (QOperator vs QDQ) governs a large INT8 latency swing on Arm Cortex-A76,
 > and that QOperator models run 1.8 to 4x *slower* than FP32.
 >
-> **That attribution is wrong, and the manuscript has been withdrawn from review.**
+> **That attribution is wrong. It is retracted, and the manuscript is not being pursued.**
 >
 > The arm labelled `QOperator` here was never a QOperator export. The model files contain
 > `DynamicQuantizeLinear` and `ConvInteger` operators, which are the signature of *dynamic*
@@ -24,27 +24,42 @@
 > labelling it.** `DynamicQuantizeLinear` / `ConvInteger` means dynamic, `QLinearConv` means
 > static QOperator, and `QuantizeLinear` / `DequantizeLinear` around ops means QDQ.
 
-# The INT8 Configuration Cliff (Raspberry Pi 5 / Arm Cortex-A76)
+# INT8 configuration study (Raspberry Pi 5 / Arm Cortex-A76)
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21844863.svg)](https://doi.org/10.5281/zenodo.21844863)
 
-Reproducible artifact for the paper **"The INT8 Configuration Cliff: Export Format and
-Graph Optimization, Not Weights, Govern a 40× Latency Swing on Arm Cortex-A76"**
-(submitted to IEEE Embedded Systems Letters).
+Measurement artifact from a retracted manuscript. The manuscript argued that the ONNX export
+format governs the sign of the INT8 effect on a Cortex-A76. That argument does not hold, for
+the reason given in the notice above, and the paper is not being pursued. The measurements
+themselves are unaffected and are kept here so the correction is checkable.
 
-## Summary
-On the same Raspberry Pi 5 and the same INT8 weights, inference latency spans a ~40× range in
-the INT8/FP32 ratio — from a 10.7× speedup to a 2.2× slowdown — controlled entirely by two
-configuration choices most benchmarks never report:
+The corrected study is "When Does INT8 Actually Pay on an Edge CPU? A Cross-Platform Audit of
+Post-Training Quantization", which re-measures this across three microarchitectures with
+byte-identical models and one runtime version.
 
-1. **Export format** — ONNX QDQ (`QuantizeLinear`/`DequantizeLinear`) vs. QOperator (`QLinearConv`).
-2. **Runtime graph-optimization level** — `ORT_ENABLE_BASIC` vs. `ORT_ENABLE_ALL`.
+## What this artifact contains, and what it does not show
 
-QDQ at `ENABLE_ALL` gives 2.6–10.7× speedups; the same QDQ model at `BASIC` is ~2× *slower*
-than FP32; QOperator models are 1.8–4× slower at every level. Top-1 accuracy is preserved to
-within 0.5 points throughout. We also report that a previously observed tail-latency anomaly on
-this platform did not reproduce across a single minor ONNX Runtime update — a caution on the
-fragility of configuration- and version-blind edge benchmarks.
+The measurements are latency of the same ImageNet models on a Raspberry Pi 5 across quantized
+variants and two ONNX Runtime graph-optimization levels. Those numbers are real and reproducible
+with the scripts here.
+
+What the original manuscript concluded from them is not. It read the spread as a consequence of
+the ONNX export format, QDQ against QOperator, and reported that QOperator models run slower
+than FP32 at every optimization level. The arm labelled QOperator was never a QOperator export.
+Its operator graph contains DynamicQuantizeLinear and ConvInteger, which is dynamic
+quantization, not the QLinearConv that a static QOperator export produces.
+
+Re-quantizing the same weights statically in both representations reverses it. On the
+Cortex-A76 static QOperator runs 1.25 to 2.70 times faster than FP32. What actually governs the
+sign is dynamic against static quantization, worth more than 4x. The choice between the two
+static representations is worth under 20 percent.
+
+Graph-optimization level does matter, and that part survives: QDQ at ORT_ENABLE_ALL is much
+faster than the same file at ORT_ENABLE_BASIC, because fusion is what makes the quantized graph
+pay. Top-1 accuracy is preserved to within 0.5 points across the variants.
+
+One secondary result in the manuscript, a tail-latency anomaly, did not reproduce across a
+minor ONNX Runtime update and was retracted separately.
 
 ## Contents
 ```
@@ -65,19 +80,30 @@ LICENSE                      MIT
 - Python 3.11, ONNX Runtime 1.24.4, `CPUExecutionProvider`
 - Install: `pip install onnxruntime numpy scipy scikit-learn`
 
-## Reproducing the headline numbers
+## Reproducing the measurements
 Place the FP32/INT8 ONNX exports under `exports/` (paths configurable at the top of each
 script) and run, e.g.:
 ```bash
-python scripts/int8_full_ab.py        # the configuration cliff table
+python scripts/int8_full_ab.py              # the latency table across configurations
 python scripts/paper7_accuracy_latency.py   # accuracy is preserved across precisions
 ```
-Every number in the paper's tables and figure is produced by these scripts on the hardware
-above. Absolute latencies vary slightly with thermal state; the qualitative cliff (format ×
-optimization level determining the sign of the INT8 effect) is stable.
+These scripts produce every number the manuscript reported, on the hardware above. Absolute
+latencies vary slightly with thermal state. What the numbers were taken to mean is retracted,
+for the reason in the notice at the top of this page; the numbers themselves reproduce.
 
 ## Citation
-If you use this artifact, please cite the paper (IEEE Embedded Systems Letters, 2026).
+
+There is no paper to cite for this artifact. The manuscript it accompanied is retracted and is
+not being pursued.
+
+Cite the archived snapshot if you use the measurements:
+
+    Jacob, M. N. INT8 configuration study on Raspberry Pi 5 (Arm Cortex-A76).
+    Zenodo. https://doi.org/10.5281/zenodo.21844863
+
+For the corrected result on when INT8 pays on an edge CPU, cite that work instead once it is
+available.
+
 Author: Manu Nicholas Jacob. Released under the MIT License.
 
 ## Archived version

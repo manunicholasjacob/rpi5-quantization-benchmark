@@ -26,6 +26,8 @@
 
 # The INT8 Configuration Cliff (Raspberry Pi 5 / Arm Cortex-A76)
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21844863.svg)](https://doi.org/10.5281/zenodo.21844863)
+
 Reproducible artifact for the paper **"The INT8 Configuration Cliff: Export Format and
 Graph Optimization, Not Weights, Govern a 40× Latency Swing on Arm Cortex-A76"**
 (submitted to IEEE Embedded Systems Letters).
@@ -77,3 +79,10 @@ optimization level determining the sign of the INT8 effect) is stable.
 ## Citation
 If you use this artifact, please cite the paper (IEEE Embedded Systems Letters, 2026).
 Author: Manu Nicholas Jacob. Released under the MIT License.
+
+## Archived version
+
+This artifact is archived on Zenodo. The concept DOI
+[10.5281/zenodo.21844863](https://doi.org/10.5281/zenodo.21844863)
+always resolves to the latest release, and `CITATION.cff` carries the full metadata,
+which is what GitHub's "Cite this repository" button renders.

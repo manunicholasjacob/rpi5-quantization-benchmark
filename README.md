@@ -12,9 +12,11 @@
 > The label was assumed rather than verified against the operator graph.
 >
 > Re-quantizing the same weights statically in both representations reverses the finding. On the
-> Cortex-A76, static QOperator runs **1.25 to 2.70x faster** than FP32. The real determinant is
-> **dynamic versus static quantization**, worth more than 4x. The choice between the two *static*
-> representations is worth under 5%.
+> Cortex-A76, static QOperator runs **1.65 to 2.70x faster** than FP32 on seven of the nine
+> networks; ShuffleNet and SqueezeNet are slower quantized than not, on either representation.
+> The real determinant is **dynamic versus static quantization**, worth more than 4x. The choice
+> between the two *static* representations is worth a median of 1.6% across 18 matched pairs, and
+> 18% at its widest.
 >
 > The raw measurements in this repository are unchanged and remain valid as measurements. It is
 > the interpretation that was wrong. They are kept public rather than deleted so that the
@@ -50,9 +52,12 @@ Its operator graph contains DynamicQuantizeLinear and ConvInteger, which is dyna
 quantization, not the QLinearConv that a static QOperator export produces.
 
 Re-quantizing the same weights statically in both representations reverses it. On the
-Cortex-A76 static QOperator runs 1.25 to 2.70 times faster than FP32. What actually governs the
-sign is dynamic against static quantization, worth more than 4x. The choice between the two
-static representations is worth under 20 percent.
+Cortex-A76 static QOperator runs 1.65 to 2.70 times faster than FP32 on seven of the nine
+networks. The other two, ShuffleNet and SqueezeNet, are slower quantized than not, in either
+representation, so quantization is not uniformly a win even after the correction. What actually
+governs the sign is dynamic against static quantization, worth more than 4x. The choice between
+the two static representations is worth a median of 1.6 percent across 18 matched model-platform
+pairs, reaching 18 percent at its widest on MobileNetV2-12 on the A76.
 
 Graph-optimization level does matter, and that part survives: QDQ at ORT_ENABLE_ALL is much
 faster than the same file at ORT_ENABLE_BASIC, because fusion is what makes the quantized graph

@@ -8,6 +8,7 @@ authors:
   - family-names: "Jacob"
     given-names: "Manu Nicholas"
     orcid: "https://orcid.org/0009-0007-6589-6572"
+    affiliation: "Independent Researcher"
 repository-code: "https://github.com/manunicholasjacob/rpi5-quantization-benchmark"
 url: "https://manunicholasjacob.com/"
 doi: "10.5281/zenodo.21844863"
